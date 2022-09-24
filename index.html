@@ -16,6 +16,10 @@
         <div class="container-fluid">
             <div class="row">
                 <div class="col-md-2 text-warning sidenav">
+                    <div class="text-center pt-3 pb-3">
+                        <h2>WELCOME</h2>
+                        <h2 id="user-name"></h2>
+                    </div>
                     <button class="btn btn-light text-white bg-warning fs-5">NEW NOTE</button>
                     <button class="btn btn-light text-white bg-warning fs-5">ALL NOTES</button>  
                     <button class="btn btn-light text-white bg-warning fs-5">ARCHIVE</button>  
@@ -23,7 +27,7 @@
                 </div>
                 <div class="col-md-10 form-height">
                     <div class="form-height col-md-6 p-4 bg-light">
-                        <form class="">
+                        <form class="" id="form">
                             <div class="form-row">
                                 <div class="col pt-2">
                                 <input type="text" class="form-control" id="title-field" placeholder="Title" name="email">
@@ -32,15 +36,15 @@
                                 <textarea type="text" class="form-control" placeholder="your note here ..." cols="30" rows="5" id="text-field"></textarea>
                                 </div>
                                 <div class="col pt-2 text-end">
-                                    <button type="button" class="btn btn-warning text-white" id="add-btn" data-bs-toggle="modal" data-bs-target="#messageModal">Add Note</button>
+                                    <button type="button" class="btn btn-warning text-white" id="add-btn">Add Note</button>
                                 </div>
                             </div>
                         </form>
                     </div>
-                    <div class="row mt-5 all-notes">
-                        <h2>NOTES</h2>
+                    <h2 class="pt-3">YOUR NOTES</h2>
+                    <div class="row mt-1 all-notes">
                         <p class="hide-text fs-2">No notes yet use the form to add new notes</p>
-                        <div class="col-md-6 mt-2">
+                        <!-- <div class="col-md-6 mt-2">
                             <div class="card">
                                 <div class="card-header">Title</div>
                                 <div class="card-body">
@@ -51,15 +55,12 @@
                                     <button class="btn-danger">DELETE</button>
                                 </div>
                             </div>
-                        </div>
+                        </div> -->
                     </div>
                 </div>
             </div>
         </div>
-<<<<<<< HEAD
-=======
 
->>>>>>> a59a75e2acfa8988e7cfe8a4f015ab68d26a254b
        <!-- modal -->
         <div class="modal " id="messageModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
             <div class="modal-dialog modal-dialog-centered">
@@ -71,10 +72,9 @@
                 </div>
             </div>
       </div>
-      
-
     </div>
     <script src="js/main.js"></script>
+    <!-- <script src="js/main3.js"></script> -->
     <script src="./js/bootstrap.min.js"></script>
 </body>
 </html>

@@ -3,12 +3,12 @@ let addBtn = document.querySelector("#add-btn"),
     noteBody = document.querySelector("#text-field"),
     modalText = document.querySelector(".modal-text"),
     noNotes = document.querySelector(".hide-text")
-    // notes = document.querySelector(".all-notes")
+    allNotes = document.querySelector(".all-notes")
     modalText = document.querySelector(".modal-text")
 
-
-addBtn.addEventListener("click", () =>{
+    addBtn.addEventListener("click", (e) =>{
     console.log("working")
+    e.preventDefault();
     if(noteTitle.value == ""){
         modalText.innerHTML = "Add a Title";
         modalText.classList.add("text-danger");
@@ -22,8 +22,8 @@ addBtn.addEventListener("click", () =>{
         modalText.classList.add("text-danger");
     }
     
-    let notes = "";
-        notes = localStorage.getItem(notes);
+    // let notes = "",
+        notes = localStorage.getItem("notes")
     if(notes == null){
         notesObj = [];
     }else {
@@ -35,12 +35,12 @@ addBtn.addEventListener("click", () =>{
         body : noteBody.value
     }
     notesObj.push(myObj);
-    localStorage.setItem("notes", JSON.stringify());
+    localStorage.setItem("notes", JSON.stringify(notesObj));
     noteTitle.value = "";
     noteBody.value = "";
 
     showNotes();
-}) 
+});
 
 // Display Notes on the page
 
@@ -55,7 +55,7 @@ function showNotes(){
 
     let html = "";
     notesObj.forEach(function(element, index){
-        html = `
+        html += `
         <div class="col-md-6 mt-2">
             <div class="card">
                 <div class="card-header font-weight-bold">${element.title}</div>
@@ -70,13 +70,13 @@ function showNotes(){
         </div>`;
     });
 
-    let allNotes = document.querySelector("all-notes");
+    let allNotes = document.querySelector(".all-notes");
     if(notesObj.length != 0){
         allNotes.innerHTML = html;
     }else{
-        noNotes.classList.add("showtext");
+        noNotes.classList.add("show-text");
     }
 }
-    showNotes();
+showNotes();
 
 
