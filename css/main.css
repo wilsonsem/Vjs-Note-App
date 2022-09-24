@@ -15,3 +15,9 @@ body{
 .card{
     height: 200px;
 }
+.hide-text{
+    display:none;
+}
+.show-text{
+    display: block;
+}
