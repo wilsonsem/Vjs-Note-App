@@ -1,0 +1,14 @@
+body{
+    background: rgb(246, 246, 246);
+}
+.body-height{
+    min-height: 100vh;
+    /* background: rgb(246, 246, 246); */
+}
+
+.form-height{
+    max-height: 300px;
+}
+.card{
+    height: 200px;
+}
