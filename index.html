@@ -26,14 +26,13 @@
                         <form class="">
                             <div class="form-row">
                                 <div class="col pt-2">
-                                <input type="text" class="form-control" id="email" placeholder="Title" name="email">
+                                <input type="text" class="form-control" id="title-field" placeholder="Title" name="email">
                                 </div>
                                 <div class="col">
-                                <textarea type="text" class="form-control" placeholder="your note here ..." cols="30" rows="5"></textarea>
+                                <textarea type="text" class="form-control" placeholder="your note here ..." cols="30" rows="5" id="text-field"></textarea>
                                 </div>
-                                <!-- <textarea name="" id="" ></textarea> -->
                                 <div class="col pt-2 text-end">
-                                    <button type="text" class=" btn btn-warning text-white" placeholder="your note here ...">Add Note</button>
+                                    <button type="button" class="btn btn-warning text-white" id="add-btn" data-bs-toggle="modal" data-bs-target="#exampleModal">Add Note</button>
                                 </div>
                             </div>
                         </form>
@@ -92,6 +91,26 @@
                 </div>
             </div>
         </div>
+       <!-- Vertically centered modal -->
+        <div class="modal " id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                <div class="modal-dialog modal-dialog-centered">
+                  <div class="modal-content">
+                    <!-- <div class="modal-header"> -->
+                      <!-- <h5 class="modal-title">Modal title</h5> -->
+                      <!-- <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button> -->
+                    <!-- </div> -->
+                    <div class="modal-body">
+                      <h5 class="text-center pt-4">Modal body text goes here.</h5>
+                      <div class="text-end p-2">
+                            <button type="button" class="btn btn-primary" data-bs-dismiss="modal">OK</button>
+                          </div>
+                    </div>
+                    
+                  </div>
+                </div>
+      </div>
+      
+
     </div>
     <script src="main.js"></script>
     <script src="./js/bootstrap.min.js"></script>
