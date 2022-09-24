@@ -1,9 +1,13 @@
 let addBtn = document.querySelector("#add-btn"),
     noteTitle = document.querySelector("#title-field"),
     noteBody = document.querySelector("#text-field"),
+<<<<<<< HEAD
     modalText = document.querySelector(".modal-text"),
     noNotes = document.querySelector(".hide-text")
     // notes = document.querySelector(".all-notes")
+=======
+    modalText = document.querySelector(".modal-text")
+>>>>>>> a59a75e2acfa8988e7cfe8a4f015ab68d26a254b
 
 
 addBtn.addEventListener("click", () =>{
@@ -21,6 +25,7 @@ addBtn.addEventListener("click", () =>{
         modalText.classList.add("text-danger");
     }
     
+<<<<<<< HEAD
     let notes = "";
         notes = localStorage.getItem(notes);
     if(notes == null){
@@ -77,3 +82,6 @@ function showNotes(){
     }
 }
 showNotes();
+=======
+}) 
+>>>>>>> a59a75e2acfa8988e7cfe8a4f015ab68d26a254b
