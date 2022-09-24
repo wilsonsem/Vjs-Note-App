@@ -15,12 +15,11 @@
         </nav>
         <div class="container-fluid">
             <div class="row">
-                <div class="col-md-2 text-warning">
-                    <nav id="navbar" class="navbar nav-menu">
-                        <button class="btn btn-light text-white bg-warning">WELCOME</button>
-                        <button class="btn btn-light text-white bg-warning">NEW NOTE</button>
-                        <button class="btn btn-light text-white bg-warning">ALL NOTES</button>  
-                    </nav>
+                <div class="col-md-2 text-warning sidenav">
+                    <button class="btn btn-light text-white bg-warning fs-5">NEW NOTE</button>
+                    <button class="btn btn-light text-white bg-warning fs-5">ALL NOTES</button>  
+                    <button class="btn btn-light text-white bg-warning fs-5">ARCHIVE</button>  
+                    <button class="btn btn-light text-white bg-warning fs-5">SETTINGS</button>  
                 </div>
                 <div class="col-md-10 form-height">
                     <div class="form-height col-md-6 p-4 bg-light">
@@ -41,19 +40,43 @@
                     </div>
                     <div class="row mt-5">
                         <h2>NOTES</h2>
-                        <div class="col-md-4 ">
+                        <div class="col-md-6 mt-2">
                             <div class="card">
                                 <div class="card-header">Title</div>
                                 <div class="card-body">
                                     <p class="card-text">With supporting text below as a natural lead-in to additional content. Lorem ipsum, dolor sit amet consectetur adipisicing elit.</p>
-                                    <div class="text-end mb-auto">
+                                </div>
+                                <div class="text-end p-2">
+                                    <button class="btn-success">EDIT</button>
+                                    <button class="btn-danger">DELETE</button>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6 mt-2">
+                            <div class="card">
+                                <div class="card-header">Title</div>
+                                <div class="card-body">
+                                    <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
+                                </div>
+                                <div class="text-end p-2">
+                                    <button class="btn-success">EDIT</button>
+                                    <button class="btn-danger">DELETE</button>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6 mt-2">
+                                <div class="card">
+                                    <div class="card-header font-weight-bold">Title</div>
+                                    <div class="card-body">
+                                        <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
+                                    </div>
+                                    <div class="text-end p-2">
                                         <button class="btn-success">EDIT</button>
                                         <button class="btn-danger">DELETE</button>
                                     </div>
                                 </div>
                             </div>
-                        </div>
-                        <div class="col-md-4">
+                        <!-- <div class="col-md-4 ">
                             <div class="card">
                                 <div class="card-header">Title</div>
                                 <div class="card-body">
@@ -64,19 +87,7 @@
                                     </div>
                                 </div>
                             </div>
-                        </div>
-                        <div class="col-md-4 ">
-                            <div class="card">
-                                <div class="card-header">Title</div>
-                                <div class="card-body">
-                                    <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
-                                    <div class="text-end">
-                                        <button class="btn-success">EDIT</button>
-                                        <button class="btn-danger">DELETE</button>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
+                        </div> -->
                     </div>
                 </div>
             </div>
