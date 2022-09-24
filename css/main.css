@@ -21,3 +21,9 @@ body{
 .show-text{
     display: block;
 }
+@media only screen and (max-width: 992px){
+    .sidenav button{
+        width: 24%;
+        height: 50px;
+    }
+}

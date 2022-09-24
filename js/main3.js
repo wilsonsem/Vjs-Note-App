@@ -1,4 +1,3 @@
-const displayName = document.querySelector("#user-name")
 const form =document.querySelector("#form")
 const noteTitle = document.querySelector("#title-field")
 const noteBody = document.querySelector("#text-field")

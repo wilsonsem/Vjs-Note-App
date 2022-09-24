@@ -5,10 +5,20 @@ let addBtn = document.querySelector("#add-btn"),
     noNotes = document.querySelector(".hide-text")
     allNotes = document.querySelector(".all-notes")
     modalText = document.querySelector(".modal-text")
+    displayName = document.querySelector("#user-name")
+    // const displayName = document.querySelector("#user-name")
 
-    addBtn.addEventListener("click", (e) =>{
-    console.log("working")
-    e.preventDefault();
+
+window.addEventListener("load", () =>{
+
+    let userName = localStorage.getItem('userName') || '';
+    // displayName.innerHTML = userName.toUpperCase();
+    userName = prompt('what should we call you');
+    // if(userName){
+        localStorage.setItem('userName' , userName)
+    // }
+    displayName.innerHTML = userName;
+
     if(noteTitle.value == ""){
         modalText.innerHTML = "Add a Title";
         modalText.classList.add("text-danger");
@@ -22,61 +32,67 @@ let addBtn = document.querySelector("#add-btn"),
         modalText.classList.add("text-danger");
     }
     
-    // let notes = "",
+
+    //to add a new note from form and save to local storage
+    addBtn.addEventListener("click", (e) =>{
+        
         notes = localStorage.getItem("notes")
-    if(notes == null){
-        notesObj = [];
-    }else {
-        notesObj = JSON.parse(notes);
-    }
+        if(notes == null){
+            notesObj = [];
+        }else {
+            notesObj = JSON.parse(notes);
+        }
 
-    let myObj = {
-        title : noteTitle.value,
-        body : noteBody.value
-    }
-    notesObj.push(myObj);
-    localStorage.setItem("notes", JSON.stringify(notesObj));
-    noteTitle.value = "";
-    noteBody.value = "";
+        let myObj = {
+            title : noteTitle.value,
+            body : noteBody.value
+        }
+        notesObj.push(myObj);
+        localStorage.setItem("notes", JSON.stringify(notesObj));
+        noteTitle.value = "";
+        noteBody.value = "";
 
-    showNotes();
-});
-
-// Display Notes on the page
-
-function showNotes(){
-    let notes = localStorage.getItem("notes");
-
-    if(notes == null){
-        notesObj = [];
-    }else {
-        notesObj = JSON.parse(notes);
-    }
-
-    let html = "";
-    notesObj.forEach(function(element, index){
-        html += `
-        <div class="col-md-6 mt-2">
-            <div class="card">
-                <div class="card-header font-weight-bold">${element.title}</div>
-                <div class="card-body">
-                    <p class="card-text">${element.body}</p>
-                </div>
-                <div class="text-end p-2">
-                    <button id="${index}" class="btn-success">EDIT</button>
-                    <button id="${index}" class="btn-danger">DELETE</button>
-                </div>
-            </div>
-        </div>`;
+        showNotes();
     });
 
-    let allNotes = document.querySelector(".all-notes");
-    if(notesObj.length != 0){
-        allNotes.innerHTML = html;
-    }else{
-        noNotes.classList.add("show-text");
+
+    //function to display notes
+    function showNotes(){
+        let notes = localStorage.getItem("notes");
+    
+        if(notes == null){
+            notesObj = [];
+        }else {
+            notesObj = JSON.parse(notes);
+        }
+    
+        let html = "";
+        notesObj.forEach(function(element, index){
+            html += `
+            <div class="col-md-6 mt-2">
+                <div class="card">
+                    <div class="card-header fs-6 fw-bold text-uppercase">${element.title}</div>
+                    <div class="card-body">
+                        <p class="card-text">${element.body}</p>
+                    </div>
+                    <div class="text-end p-3">
+                        <button id="${index}" class="btn-success">EDIT</button>
+                        <button id="${index}" class="btn-danger">DELETE</button>
+                    </div>
+                </div>
+            </div>`;
+    });
+    
+        let allNotes = document.querySelector(".all-notes");
+        if(notesObj.length != 0){
+            allNotes.innerHTML = html;
+        }else{
+            noNotes.classList.add("show-text");
+        }
     }
-}
-showNotes();
+    showNotes();
+    
+})
+    
 
 
