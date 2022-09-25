@@ -77,7 +77,7 @@ window.addEventListener("load", () =>{
                     </div>
                     <div class="text-end p-3">
                         <button id="${index}" class="btn-success">EDIT</button>
-                        <button id="${index}" class="btn-danger">DELETE</button>
+                        <button id="${index}" class="btn-danger" onclick="deleteNote(this.id)">DELETE</button>
                     </div>
                 </div>
             </div>`;
@@ -91,8 +91,28 @@ window.addEventListener("load", () =>{
         }
     }
     showNotes();
+
+    
+    // delete a note
+    function deleteNote(){
+        let confirmDelete = confirm("Are you sure you want to delete?");
+        if(confirmDelete == true){
+            let notes = localStorage.getItem("notes");
+
+            if(notes == null){
+                notesObj = [];
+            }else{
+                notesObj = JSON.parse(notes);
+            }
+        }
+        notesObj.splice(index, 1);
+        localStorage.setItem("notes", JSON.stringify(notesObj));
+        showNotes()
+    }
     
 })
+
+
     
 
 
