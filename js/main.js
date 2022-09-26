@@ -5,13 +5,15 @@ let addBtn = document.querySelector("#add-btn"),
     noNotes = document.querySelector(".hide-text"),
     allNotes = document.querySelector(".all-notes"),
     displayName = document.querySelector("#user-name"),
-    // deleteBtn = document.querySelector("#delete-btn"),
+    formDiv = document.querySelector("#form-div")
     noteHeading = document.querySelector("#note-header"),
     // nav buttons
+    notesPage = document.querySelector("#notes-page"),
     newNote = document.querySelector("#new-note"),
     notesDiv = document.querySelector("#notes-div"),
     archive = document.querySelector("#archive"),
     help = document.querySelector("#help")
+   
      
 
 
@@ -144,5 +146,12 @@ function deleteNote(index){
 newNote.addEventListener("click", ()=> {
     noteHeading.classList.add("hide");
     notesDiv.classList.add("hide");
+})
+
+notesPage.addEventListener("click", () =>{
+    formDiv.classList.add("hide");
+    noteHeading.classList.remove("hide");
+    notesDiv.classList.remove("hide");
+    // showNotes();
 })
 
