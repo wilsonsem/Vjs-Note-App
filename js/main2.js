@@ -44,7 +44,7 @@ function showNotes() {
             <p class="note-counter">Note ${index + 1}</p>
             <h3 class="note-title"> ${element.title} </h3>
             <p class="note-text"> ${element.text}</p>
-            <button id="${index}"onclick="deleteNote(this.id)" class="note-btn">Delete Note</button>
+            <button id="${index}" onclick="deleteNote(this.id)" class="note-btn">Delete Note</button>
             <button id="${index}"onclick="editNote(this.id)" class="note-btn edit-btn">Edit Note</button>
         </div>
             `;
