@@ -4,11 +4,15 @@ let addBtn = document.querySelector("#add-btn"),
     modalText = document.querySelector(".modal-text"),
     noNotes = document.querySelector(".hide-text"),
     allNotes = document.querySelector(".all-notes"),
-    // modalText = document.querySelector(".modal-text"),
     displayName = document.querySelector("#user-name"),
-    deleteBtn = document.querySelector("#delete-btn")
-    
-    // const displayName = document.querySelector("#user-name")
+    // deleteBtn = document.querySelector("#delete-btn"),
+    noteHeading = document.querySelector("#note-header"),
+    // nav buttons
+    newNote = document.querySelector("#new-note"),
+    notesDiv = document.querySelector("#notes-div"),
+    archive = document.querySelector("#archive"),
+    help = document.querySelector("#help")
+     
 
 
 window.addEventListener("load", () =>{
@@ -28,7 +32,8 @@ window.addEventListener("load", () =>{
     }
     displayName.innerHTML = userName;
     
-  
+    showNotes();
+    
 })
 
 //to add a new note from form and save to local storage
@@ -114,12 +119,12 @@ function showNotes(){
     }else{
         noNotes.classList.add("show-text");
     }
+    
 }
-showNotes();
 
 // delete a note
 function deleteNote(index){
-    
+
     if(index){
         let notes = localStorage.getItem("notes");
 
@@ -135,5 +140,9 @@ function deleteNote(index){
     
 }
     
-
+// nav buttons
+newNote.addEventListener("click", ()=> {
+    noteHeading.classList.add("hide");
+    notesDiv.classList.add("hide");
+})
 
