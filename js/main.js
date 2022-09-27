@@ -28,14 +28,14 @@ window.addEventListener("load", () =>{
     // if(userName){
     //     localStorage.setItem('userName' , userName)
     // }
-    if(userName == "null"){
+    if(userName == null){
         userName = prompt('what should we call you');
         localStorage.setItem('userName' , userName)
     }else {
         userName = localStorage.getItem('userName');
     }
     displayName.innerHTML = userName;
-        
+    helpCenter()
 })
 
 //to add a new note from form and save to local storage
@@ -78,14 +78,14 @@ addBtn.addEventListener("click", (e) =>{
 function showNotes(){
     let notes = localStorage.getItem("notes");
 
-    if(notes == null){
+    if(notes == ""){
         notesObj = [];
     }else {
         notesObj = JSON.parse(notes);
-        console.log("true")
+        // console.log(notesObj)
     }
 
-    let html = "";
+    let html = " ";
     notesObj.forEach(function(element, index){        
         html += `
         <div class="col-md-6 mt-2">
@@ -125,10 +125,8 @@ function showNotes(){
     }else{
         noNotes.classList.add("show-text");
     }
-    
 }
 
-// showNotes();
 
 // delete a note
 function deleteNote(index){
@@ -142,26 +140,25 @@ function deleteNote(index){
             notesObj = JSON.parse(notes);
         }
     }
-    notesObj.splice(index, 1);
+    let deleted = notesObj.splice(index, 1);
     localStorage.setItem("notes", JSON.stringify(notesObj));
     showNotes();
 }
     
 // nav buttons
 newNote.addEventListener("click", ()=> {
-   window.location.reload();
-//    helpDiv.classList.add("hide");
-helpCenter()
+    window.location.reload();
+    // helpCenter()
 })
 
 notesPage.addEventListener("click", () =>{
     formDiv.classList.add("hide");
     noteHeading.classList.remove("hide");
     notesDiv.classList.remove("hide");
-    // helpDiv.classList.add("hide");
-    helpCenter()
-    
+    helpCenter()   
 })
+
+
 function helpCenter(){
     helpDiv.classList.add("hide");
 }
@@ -170,7 +167,9 @@ help.addEventListener("click", () => {
     helpDiv.classList.remove("hide");
     formDiv.classList.add("hide");
     noteHeading.classList.add("hide");
-})
+    })
+
+
 // function for archived notes
 // function archiveNote(){
 //     archive = localStorage.getItem("archive");
@@ -185,3 +184,4 @@ help.addEventListener("click", () => {
     // showNotes();
 //     console.log(archiveObj);
 // }
+showNotes()
