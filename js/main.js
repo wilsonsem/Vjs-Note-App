@@ -7,6 +7,8 @@ let addBtn = document.querySelector("#add-btn"),
     displayName = document.querySelector("#user-name"),
     formDiv = document.querySelector("#form-div")
     noteHeading = document.querySelector("#note-header"),
+    helpDiv = document.querySelector("#help-center"),
+    
     // nav buttons
     notesPage = document.querySelector("#notes-page"),
     newNote = document.querySelector("#new-note"),
@@ -33,9 +35,7 @@ window.addEventListener("load", () =>{
         userName = localStorage.getItem('userName');
     }
     displayName.innerHTML = userName;
-    
-    showNotes();
-    
+        
 })
 
 //to add a new note from form and save to local storage
@@ -49,10 +49,11 @@ addBtn.addEventListener("click", (e) =>{
         modalText.innerHTML = "Note cannot be empty";
         modalText.classList.add("text-danger");
     }
-    else if (noteTitle.value == "" || noteBody.value == ""){
+    else if(noteTitle.value == "" || noteBody.value == ""){
         modalText.innerHTML = "please fill out the fields";
         modalText.classList.add("text-danger");
-    }else{
+    }
+    // else{
         let notes = localStorage.getItem("notes");
         if (notes == null) {
             noteObj = [];
@@ -67,12 +68,11 @@ addBtn.addEventListener("click", (e) =>{
         localStorage.setItem("notes", JSON.stringify(noteObj));
           noteTitle.value = "";
           noteBody.value = "";
-        //   console.log(noteObj);
-    }
-    
-  
+          console.log(noteObj);
+
   showNotes();
 })
+
 
 //function to display notes
 function showNotes(){
@@ -82,20 +82,25 @@ function showNotes(){
         notesObj = [];
     }else {
         notesObj = JSON.parse(notes);
+        console.log("true")
     }
 
     let html = "";
-    notesObj.forEach(function(element, index){
+    notesObj.forEach(function(element, index){        
         html += `
         <div class="col-md-6 mt-2">
             <div class="card">
-                <div class="card-header fs-6 fw-bold text-uppercase">${element.title}</div>
+                <div class="card-header fs-6 fw-bold text-uppercase d-flex justify-content-between bg-warning text-white">
+                    ${element.title}<button id="${index}" onclick="archiveNote(this.id)"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-star-fill" viewBox="0 0 16 16">
+                    <path d="M3.612 15.443c-.386.198-.824-.149-.746-.592l.83-4.73L.173 6.765c-.329-.314-.158-.888.283-.95l4.898-.696L7.538.792c.197-.39.73-.39.927 0l2.184 4.327 4.898.696c.441.062.612.636.282.95l-3.522 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256z"/>
+                    </svg></button>
+                </div>
                 <div class="card-body">
                     <p class="card-text">${element.body}</p>
                 </div>
                 <div class="text-end p-2">
                     <button id="${index}" class="btn-success">EDIT</button>
-                    <button id="${index}" class="btn-danger"   data-bs-toggle="modal" data-bs-target="#exampleModal${index}">DELETE</button>
+                    <button id="${index}" class="btn-danger"  data-bs-toggle="modal" data-bs-target="#exampleModal${index}">DELETE</button>
                 </div>
             </div>
         </div>
@@ -112,8 +117,7 @@ function showNotes(){
         </div>
     </div>`;
 
-        
-});
+    });
 
     let allNotes = document.querySelector(".all-notes");
     if(notesObj.length != 0){
@@ -123,6 +127,8 @@ function showNotes(){
     }
     
 }
+
+// showNotes();
 
 // delete a note
 function deleteNote(index){
@@ -139,19 +145,43 @@ function deleteNote(index){
     notesObj.splice(index, 1);
     localStorage.setItem("notes", JSON.stringify(notesObj));
     showNotes();
-    
 }
     
 // nav buttons
 newNote.addEventListener("click", ()=> {
-    noteHeading.classList.add("hide");
-    notesDiv.classList.add("hide");
+   window.location.reload();
+//    helpDiv.classList.add("hide");
+helpCenter()
 })
 
 notesPage.addEventListener("click", () =>{
     formDiv.classList.add("hide");
     noteHeading.classList.remove("hide");
     notesDiv.classList.remove("hide");
-    // showNotes();
+    // helpDiv.classList.add("hide");
+    helpCenter()
+    
 })
+function helpCenter(){
+    helpDiv.classList.add("hide");
+}
 
+help.addEventListener("click", () => {
+    helpDiv.classList.remove("hide");
+    formDiv.classList.add("hide");
+    noteHeading.classList.add("hide");
+})
+// function for archived notes
+// function archiveNote(){
+//     archive = localStorage.getItem("archive");
+
+//         if(archive == null){
+//             archiveObj = [];
+//         }else{
+//             archiveObj = JSON.parse(archive);
+//         }
+//     archiveObj.push(index);
+//     localStorage.setItem("archive", JSON.stringify(archiveObj));
+    // showNotes();
+//     console.log(archiveObj);
+// }
