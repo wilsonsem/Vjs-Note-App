@@ -141,7 +141,11 @@ function deleteNote(index){
         }
     }
     let deleted = notesObj.splice(index, 1);
+    console.log(deleted)
     localStorage.setItem("notes", JSON.stringify(notesObj));
+    console.log(JSON.stringify(notesObj))
+    
+    // localStorage.setItem("notes", JSON.stringify(notesObj));
     showNotes();
 }
     
@@ -155,10 +159,9 @@ notesPage.addEventListener("click", () =>{
     formDiv.classList.add("hide");
     noteHeading.classList.remove("hide");
     notesDiv.classList.remove("hide");
-    helpCenter()   
+    helpCenter()
+    
 })
-
-
 function helpCenter(){
     helpDiv.classList.add("hide");
 }
@@ -171,17 +174,27 @@ help.addEventListener("click", () => {
 
 
 // function for archived notes
-// function archiveNote(){
+
+// function archiveNote(index){
+
 //     archive = localStorage.getItem("archive");
 
 //         if(archive == null){
 //             archiveObj = [];
 //         }else{
-//             archiveObj = JSON.parse(archive);
+//             archiveObj = archive;
+//             console.log(archive)
 //         }
-//     archiveObj.push(index);
-//     localStorage.setItem("archive", JSON.stringify(archiveObj));
+    // archiveObj.push(index);
+    // let deleted = notesObj.splice(index, 1);
+    // console.log(deleted)
+    // archiveObj.push(deleted)
+    // localStorage.setItem("archive", JSON.stringify(archiveObj));
+    // console.log(JSON.stringify(archiveObj))
+
+    // localStorage.setItem("archive", JSON.stringify(archiveObj));
     // showNotes();
-//     console.log(archiveObj);
+    // console.log(archiveObj);
 // }
+
 showNotes()
