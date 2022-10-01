@@ -42,8 +42,12 @@ window.addEventListener("load", () =>{
 addBtn.addEventListener("click", (e) =>{
      
     if(noteTitle.value == ""){
-        modalText.innerHTML = "Add a Title";
-        modalText.classList.add("text-danger");
+        `<div class="alert alert-warning d-flex align-items-center" role="alert">
+            <svg class="bi flex-shrink-0 me-2" width="24" height="24" role="img" aria-label="Warning:"><use xlink:href="#exclamation-triangle-fill"/></svg>
+            <div>
+                An example warning alert with an icon
+            </div>
+        </div>`;
     }
     else if(noteBody.value == ""){
         modalText.innerHTML = "Note cannot be empty";
@@ -170,31 +174,34 @@ help.addEventListener("click", () => {
     helpDiv.classList.remove("hide");
     formDiv.classList.add("hide");
     noteHeading.classList.add("hide");
+    notesDiv.innerHTML = "";
     })
 
 
 // function for archived notes
 
-// function archiveNote(index){
+function archiveNote(index){
 
-//     archive = localStorage.getItem("archive");
+    archive = localStorage.getItem("archive");
 
-//         if(archive == null){
-//             archiveObj = [];
-//         }else{
-//             archiveObj = archive;
-//             console.log(archive)
-//         }
+        if(archive == null){
+            console.log("null")
+            archiveObj = [];
+        }else{
+            archiveObj = JSON.parse(archive);
+            // console.log(archive)
+        }
     // archiveObj.push(index);
-    // let deleted = notesObj.splice(index, 1);
-    // console.log(deleted)
-    // archiveObj.push(deleted)
-    // localStorage.setItem("archive", JSON.stringify(archiveObj));
+    let deleted = notesObj.splice(index, 1);
+    console.log(deleted)
+    archiveObj.push(deleted);
+    localStorage.setItem("archive", JSON.stringify(archiveObj));
     // console.log(JSON.stringify(archiveObj))
+    // console.log(JSON.stringify(noteObj))
 
     // localStorage.setItem("archive", JSON.stringify(archiveObj));
-    // showNotes();
-    // console.log(archiveObj);
-// }
+    showNotes();
+    console.log(archiveObj);
+}
 
 showNotes()
