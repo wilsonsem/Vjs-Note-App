@@ -1,7 +1,7 @@
 let addBtn = document.querySelector("#add-btn"),
     noteTitle = document.querySelector("#title-field"),
     noteBody = document.querySelector("#text-field"),
-    modalText = document.querySelector(".modal-text"),
+    alertText = document.querySelector("#alert-text"),
     noNotes = document.querySelector(".hide-text"),
     allNotes = document.querySelector(".all-notes"),
     displayName = document.querySelector("#user-name"),
@@ -44,25 +44,21 @@ window.addEventListener("load", () =>{
 
 //to add a new note from form and save to local storage
 addBtn.addEventListener("click", (e) =>{
+    alertDiv.classList.remove("hide");
      
-    if(noteTitle.value == ""){
-        alertDiv.innerHTML = 
-        `<div class="alert alert-danger d-flex align-items-center" role="alert">
-            <svg class="bi flex-shrink-0 me-2" width="24" height="24" role="img" aria-label="Warning:"><use xlink:href="#exclamation-triangle-fill"/></svg>
-            <div>
-                An example warning alert with an icon
-            </div>
-         </div>`;
+    if(noteTitle.value == "" || noteBody.value == ""){
+        // alertDiv.classList.remove("hide");
+        alertText.innerHTML = " Title cannot be blank";
     }
     else if(noteBody.value == ""){
-        modalText.innerHTML = "Note cannot be empty";
-        modalText.classList.add("text-danger");
+        // alertDiv.classList.remove("hide");
+        alertText.innerHTML = " Note cannot be blank";;
     }
-    else if(noteTitle.value == "" || noteBody.value == ""){
-        modalText.innerHTML = "please fill out the fields";
-        modalText.classList.add("text-danger");
+    else if(noteTitle.value == ""){
+        // alertDiv.classList.remove("hide");
+        alertText.innerHTML = "Please fill out the fields";;
     }
-    // else{
+    else{
         let notes = localStorage.getItem("notes");
         if (notes == null) {
             noteObj = [];
@@ -78,7 +74,7 @@ addBtn.addEventListener("click", (e) =>{
           noteTitle.value = "";
           noteBody.value = "";
           console.log(noteObj);
-
+    }
   showNotes();
 })
 
@@ -117,7 +113,7 @@ function showNotes(){
         <div class="modal" id="exampleModal${index}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered">
             <div class="modal-content text">
-                <h5 class="text-center pt-4 modal-text text-danger">Are you sure you want to delete</h5>
+                <h5 class="text-center pt-4 text-danger">Are you sure you want to delete</h5>
                 <div class="text-center p-2">
                     <button type="button" id="${index}" onclick="deleteNote(this.id)" class="btn btn-danger delete-btn" data-bs-dismiss="modal">YES</button>
                     <button type="button" class="btn btn-primary" data-bs-dismiss="modal">NO</button>
