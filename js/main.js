@@ -44,11 +44,10 @@ window.addEventListener("load", () =>{
 
 //to add a new note from form and save to local storage
 addBtn.addEventListener("click", (e) =>{
-    alertDiv.classList.remove("hide");
+    hideAlert();
      
-    if(noteTitle.value == "" || noteBody.value == ""){
-        // alertDiv.classList.remove("hide");
-        alertText.innerHTML = " Title cannot be blank";
+    if(noteTitle.value == "" && noteBody.value == ""){
+        alertText.innerHTML = " Please fill out the fields";
     }
     else if(noteBody.value == ""){
         // alertDiv.classList.remove("hide");
@@ -56,9 +55,9 @@ addBtn.addEventListener("click", (e) =>{
     }
     else if(noteTitle.value == ""){
         // alertDiv.classList.remove("hide");
-        alertText.innerHTML = "Please fill out the fields";;
+        alertText.innerHTML = "  Title cannot be blank ";;
     }
-    else{
+    else if(noteTitle.value && noteBody.value){
         let notes = localStorage.getItem("notes");
         if (notes == null) {
             noteObj = [];
