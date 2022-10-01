@@ -8,13 +8,16 @@ let addBtn = document.querySelector("#add-btn"),
     formDiv = document.querySelector("#form-div")
     noteHeading = document.querySelector("#note-header"),
     helpDiv = document.querySelector("#help-center"),
+    alertDiv = document.querySelector(".alert-div"),
+    
     
     // nav buttons
     notesPage = document.querySelector("#notes-page"),
     newNote = document.querySelector("#new-note"),
     notesDiv = document.querySelector("#notes-div"),
     archive = document.querySelector("#archive"),
-    help = document.querySelector("#help")
+    help = document.querySelector("#help"),
+
    
      
 
@@ -35,19 +38,21 @@ window.addEventListener("load", () =>{
         userName = localStorage.getItem('userName');
     }
     displayName.innerHTML = userName;
-    helpCenter()
+    helpCenter();
+    hideAlert ();
 })
 
 //to add a new note from form and save to local storage
 addBtn.addEventListener("click", (e) =>{
      
     if(noteTitle.value == ""){
-        `<div class="alert alert-warning d-flex align-items-center" role="alert">
+        alertDiv.innerHTML = 
+        `<div class="alert alert-danger d-flex align-items-center" role="alert">
             <svg class="bi flex-shrink-0 me-2" width="24" height="24" role="img" aria-label="Warning:"><use xlink:href="#exclamation-triangle-fill"/></svg>
             <div>
                 An example warning alert with an icon
             </div>
-        </div>`;
+         </div>`;
     }
     else if(noteBody.value == ""){
         modalText.innerHTML = "Note cannot be empty";
@@ -168,6 +173,9 @@ notesPage.addEventListener("click", () =>{
 })
 function helpCenter(){
     helpDiv.classList.add("hide");
+}
+function hideAlert(){
+    alertDiv.classList.add("hide");
 }
 
 help.addEventListener("click", () => {
