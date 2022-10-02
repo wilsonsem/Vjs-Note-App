@@ -28,11 +28,7 @@ window.addEventListener("load", () =>{
 
     // function to get user name
     let userName = localStorage.getItem('userName')
-    // let userName = localStorage.getItem('userName') || '';
-    // userName = prompt('what should we call you');
-    // if(userName){
-    //     localStorage.setItem('userName' , userName)
-    // }
+
     if(userName == null){
         userName = prompt('what should we call you');
         localStorage.setItem('userName' , userName)
@@ -42,6 +38,13 @@ window.addEventListener("load", () =>{
     displayName.innerHTML = userName;
     helpCenter();
     hideAlert ();
+
+    // notes
+    let notes = localStorage.getItem("notes");
+        if(notes == ""){
+            noNotes.classList.add("show-text");
+        }
+
 })
 
 //to add a new note from form and save to local storage
