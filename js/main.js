@@ -9,6 +9,8 @@ let addBtn = document.querySelector("#add-btn"),
     noteHeading = document.querySelector("#note-header"),
     helpDiv = document.querySelector("#help-center"),
     alertDiv = document.querySelector(".alert-div"),
+    titleHead = document.querySelector(".title-head"),
+    
     
     
     // nav buttons
@@ -86,7 +88,6 @@ function showNotes(){
         notesObj = [];
     }else {
         notesObj = JSON.parse(notes);
-        // console.log(notesObj)
     }
 
     let html = " ";
@@ -95,7 +96,8 @@ function showNotes(){
         <div class="col-md-6 mt-2">
             <div class="card">
                 <div class="card-header fs-6 fw-bold text-uppercase d-flex justify-content-between bg-warning text-white">
-                    ${element.title}<button id="${index}" onclick="archiveNote(this.id)"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-star-fill" viewBox="0 0 16 16">
+                    <h6 class
+                    title-head>${element.title}</h6><button id="${index}" onclick="archiveNote(this.id)"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-star-fill" viewBox="0 0 16 16">
                     <path d="M3.612 15.443c-.386.198-.824-.149-.746-.592l.83-4.73L.173 6.765c-.329-.314-.158-.888.283-.95l4.898-.696L7.538.792c.197-.39.73-.39.927 0l2.184 4.327 4.898.696c.441.062.612.636.282.95l-3.522 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256z"/>
                     </svg></button>
                 </div>
@@ -103,7 +105,7 @@ function showNotes(){
                     <p class="card-text">${element.body}</p>
                 </div>
                 <div class="text-end p-2">
-                    <button id="${index}" class="btn-success">EDIT</button>
+                    <button id="${index}" onclick = "editNote(this.id)" class="btn-success">EDIT</button>
                     <button id="${index}" class="btn-danger"  data-bs-toggle="modal" data-bs-target="#exampleModal${index}">DELETE</button>
                 </div>
             </div>
@@ -180,6 +182,35 @@ help.addEventListener("click", () => {
     notesDiv.innerHTML = "";
     })
 
+
+
+// function editNote(index){
+//     console.log("working")
+//     titleHead.addEventListener("change", () => {
+//         console.log("working2")
+//     })
+
+
+function editNote(index) {
+    let notes = localStorage.getItem("notes");
+
+    noteTitle.value = noteBody.value = "";
+    addBtn.value = "edit";
+    if (notes == null) {
+      notesObj = [];
+    } else {
+      notesObj = JSON.parse(notes);
+    }
+    console.log(notesObj);
+
+    notesObj.findIndex((element, index) => {
+        noteTitle.value = element.title;
+        noteBody.value = element.body;
+    })
+    notesObj.splice(index, 1);
+        localStorage.setItem("notes", JSON.stringify(notesObj));
+        // showNotes();
+}
 
 // function for archived notes
 
