@@ -57,9 +57,10 @@ addBtn.addEventListener("click", (e) =>{
     }
     else if(noteTitle.value == ""){
         // alertDiv.classList.remove("hide");
-        alertText.innerHTML = "  Title cannot be blank ";;
+        alertText.innerHTML = "  Title cannot be blank ";
     }
     else if(noteTitle.value && noteBody.value){
+
         let notes = localStorage.getItem("notes");
         if (notes == null) {
             noteObj = [];
@@ -75,6 +76,7 @@ addBtn.addEventListener("click", (e) =>{
           noteTitle.value = "";
           noteBody.value = "";
           console.log(noteObj);
+          alertText.innerHTML = "  Title cannot be blank ";
     }
   showNotes();
 })

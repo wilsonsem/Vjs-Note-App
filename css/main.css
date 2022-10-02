@@ -39,5 +39,6 @@ svg{
     .sidenav button{
         width: 24%;
         height: 50px;
+        font-size: smaller;
     }
 }
