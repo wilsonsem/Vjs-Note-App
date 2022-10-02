@@ -38,7 +38,7 @@ svg{
 @media only screen and (max-width: 992px){
     .sidenav button{
         width: 24%;
-        height: 50px;
-        font-size: smaller;
+        height: 60px;
+        /* font-size: smaller; */
     }
 }
